@@ -4,8 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/Javascript" src="/app.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>Can you beat the computer in a race to 5?</h1>
+      <h2>Rock, Paper, Scissors!</h2>
+      <h2>Make your choice</h2>
+      <div class="playerBtns">
+        <div class="card rock">
+          <div class="card-image" data-image="rock">
+            <img src="images/rock.png" alt="rock" />
+          </div>
+          <div class="card-text">Rock</div>
+        </div>
+        <div class="card paper">
+          <div class="card-image" data-image="paper">
+            <img src="images/paper.png" alt="paper" />
+          </div>
+          <div class="card-text">Paper</div>
+        </div>
+        <div class="card scissors">
+          <div class="card-image" data-image="scissors">
+            <img src="images/scissors.png" alt="scissors" />
+          </div>
+          <div class="card-text">Scissors</div>
+        </div>
+      </div>
+      <div class="message"></div>
+      <div class="scoreboard">
+        <div class="player-score">0</div>
+        <div style="margin: 0px 20px">-</div>
+        <div class="computer-score">0</div>
+      </div>
+    </div>
+    <script type="text/Javascript" src="/app.js"></script>
+  </body>
 </html>

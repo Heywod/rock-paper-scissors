@@ -1,39 +1,98 @@
-const selections = ['rock', 'paper', 'scissors'];
-let computerSelection =
-  selections[Math.floor(Math.random() * selections.length)];
-let playerSelection = prompt('Rock, Paper, Scissors, SHOOT!').toLowerCase();
+const images = Array.from(document.querySelectorAll('.card-image'));
+const scorePlayer = document.querySelector('.player-score');
+const scoreComputer = document.querySelector('.computer-score');
+const message = document.querySelector('.message');
+
+let playerScore = 0;
+let computerScore = 0;
+
+//Game Start when image is clicked
+images.forEach((image) =>
+  image.addEventListener('click', () => {
+    if (playerScore >= 5 || computerScore >= 5) {
+      return;
+    }
+    game(image.dataset.image);
+  })
+);
+
+//Game
+
+//Computers Selection
+function computerPick() {
+  const selections = ['rock', 'paper', 'scissors'];
+  let computerGuess = selections[Math.floor(Math.random() * selections.length)];
+  return computerGuess;
+}
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection == 'rock' && computerSelection == 'rock') {
-    return 'tie';
-  } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-    return 'loss';
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    return 'win';
-  } else {
-    console.log('Error');
-  }
-}
-// console.log(playRound(playerSelection, computerSelection));
-
-function game() {
-  let wins = 0;
-  let losses = 0;
-  let round = 0;
-  for (let i = 0; i < 5; i++) {
-    if ((playRound = 'win')) {
-      wins++, round++;
-    } else if ((playRound = 'loss')) {
-      losses++, round++;
+  let log = '';
+  if (playerSelection === 'Rock') {
+    if (computerSelection === 'paper') {
+      log = 'You lost. Paper beats Rock';
+    } else if (computerSelection === 'scissors') {
+      log = 'You won! Rock beats Scissors!';
     } else {
-      ('tie');
+      log = 'Its a tie!';
     }
-    console.log(round);
-    console.log(wins);
-    console.log(losses);
+  } else if (playerSelection === 'Paper') {
+    if (computerSelection === 'scissors') {
+      log = 'You lost. Scissors beats Paper';
+    } else if (computerSelection === 'rock') {
+      log = 'You won! Paper beats Rock!';
+    } else {
+      log = 'Its a tie!';
+    }
+  } else if (playerSelection === 'Scissors') {
+    if (computerSelection === 'rock') {
+      log = 'You lost. Rock beats Scissors';
+    } else if (computerSelection === 'paper') {
+      log = 'You won! Scissors beats Paper!';
+    } else {
+      log = 'Its a tie!';
+    }
+  }
+  return log;
+}
+
+function game(playerSelect) {
+  let playerSelection = capitalize(playerSelect);
+  let computerSelection = computerPick();
+
+  let roundResult = playRound(playerSelection, computerSelection);
+
+  if (roundResult.search('won') > -1) {
+    playerScore++;
+  } else if (roundResult.search('lost') > -1) {
+    computerScore++;
+  }
+  scorePlayer.textContent = playerScore;
+  scoreComputer.textContent = computerScore;
+  message.textContent = roundResult;
+
+  if (playerScore >= 5 && computerScore < 5) {
+    message.textContent = 'Game Over! You Won!';
+  } else if (playerScore < 5 && computerScore >= 5) {
+    message.textContent = 'Game Over. You Lost.';
   }
 }
 
-console.log(game(playRound));
-console.log(computerSelection);
-console.log(playerSelection);
+//Helper Functions
+
+function capitalize(string) {
+  return string.toLowerCase().charAt(0).toUpperCase() + string.toLowerCase().slice(1);
+}
+
+//Hide selections
+// btns.forEach((btn) => {
+//   btn.addEventListener('click', () => {
+//     addHideClasses();
+//     btn.classList.remove('hide');
+//   });
+// });
+
+// function addHideClasses() {
+//   btns.forEach((btn) => {
+//     btn.classList.add('hide');
+//   });
+// }

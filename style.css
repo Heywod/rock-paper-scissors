@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Ubuntu, sans-serif;
+  background-color: #a7b89a;
+  color: #222;
+}
+
+.container {
+  text-align: center;
+}
+
+.playerBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  text-align: center;
+}
+
+.card-image {
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card-image:hover {
+  opacity: 0.7;
+}
+
+.scoreboard {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+input.hide {
+  display: none;
+}
