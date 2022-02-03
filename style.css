@@ -42,6 +42,6 @@ body {
   padding: 20px;
 }
 
-input.hide {
-  display: none;
+.message {
+  padding-top: 2rem;
 }

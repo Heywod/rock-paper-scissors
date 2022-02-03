@@ -82,17 +82,3 @@ function game(playerSelect) {
 function capitalize(string) {
   return string.toLowerCase().charAt(0).toUpperCase() + string.toLowerCase().slice(1);
 }
-
-//Hide selections
-// btns.forEach((btn) => {
-//   btn.addEventListener('click', () => {
-//     addHideClasses();
-//     btn.classList.remove('hide');
-//   });
-// });
-
-// function addHideClasses() {
-//   btns.forEach((btn) => {
-//     btn.classList.add('hide');
-//   });
-// }
